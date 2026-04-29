@@ -6,7 +6,7 @@ resource "azurerm_key_vault" "default" {
   resource_group_name = data.azurerm_resource_group.default.name
   location            = data.azurerm_resource_group.default.location
   tenant_id           = data.azurerm_client_config.current.tenant_id
-  tags                = {owner = "Amelia"}
+  tags                = { owner = "Amelia" }
 
   sku_name = "standard"
 
@@ -62,7 +62,7 @@ resource "azurerm_key_vault_key" "rsa" {
   key_vault_id = azurerm_key_vault.default.id
   key_type     = "RSA"
   key_size     = 2048
-  tags                = {owner = "Amelia"}
+  tags         = { owner = "Amelia" }
 
   key_opts = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 
@@ -84,7 +84,7 @@ resource "azurerm_key_vault_secret" "app_password" {
   name         = "app-password"
   value        = random_password.app.result
   key_vault_id = azurerm_key_vault.default.id
-  tags                = {owner = "Amelia"}
+  tags         = { owner = "Amelia" }
 
   expiration_date = "2027-01-01T00:00:00Z"
 
